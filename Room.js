@@ -40,7 +40,7 @@ class Room {
     }
   }
 
-  addPlayer(xStart = 0, yStart = 0, length = 6) {
+  addPlayer(xStart = 0, yStart = 0, length = 16) {
     const positions = [];
     for (let i = 0; i < length; i++) {
       positions.push([yStart, xStart + (length - i - 1)]);
@@ -55,11 +55,12 @@ class Room {
 
   removePlayer(id) {
     this.players = this.players.filter(player => player.id !== id);
+    this.addPlayer();
   }
 
-  async update() {
+  update() {
     this.resetRoom();
-    await this.players.forEach(player => {
+    this.players.forEach(player => {
       const { positions, id, direction } = player;
       switch (direction) {
         case "right":
@@ -90,7 +91,6 @@ class Room {
         const posY = pos[0];
         this.room[posY][posX] = index === 0 ? id * 10 : id;
       });
-      return;
     });
   }
 }

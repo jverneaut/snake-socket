@@ -15,10 +15,8 @@ export default class Board {
         ctx.beginPath();
         switch (this.state[j][i]) {
           case 10:
-            ctx.fillStyle = 'red';
-            ctx.lineWidth = 8;
-            ctx.strokeStyle = '#fff';
-            ctx.rect(i * tileWidth + 4, j * tileHeight + 4, tileWidth - 8, tileHeight - 8);
+            ctx.fillStyle = '#fff';
+            ctx.rect(i * tileWidth, j * tileHeight, tileWidth, tileHeight);
             ctx.stroke();
             break;
           case 1:
